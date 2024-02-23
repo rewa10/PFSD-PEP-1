@@ -3,7 +3,7 @@ export let failure = "FAILURE";
 
 export async function validateUser(username, password)
 {
-    let response = await  fetch("http://44.203.179.224:8000/login/", {
+    let response = await  fetch("http://3.92.180.84:8000/login/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -18,7 +18,7 @@ export async function validateUser(username, password)
 
 export async function registerUser(data)
 {
-    let response = await fetch("http://44.203.179.224:8000/register/", {
+    let response = await fetch("http://3.92.180.84:8000/register/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

@@ -75,9 +75,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'DjangoRestApiMongoDB.wsgi.application'
 CORS_ORIGIN_ALLOW_ALL = False
 # CORS_ALLOW_CREDENTIALS = True
-ALLOWED_HOSTS = ['44.203.179.224','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['3.92.180.84','localhost','127.0.0.1']
 CORS_ORIGIN_WHITELIST = [
-     "http://44.203.179.224:3000",
+     "http://3.92.180.84:3000",
      "http://localhost:3000",
      "http://127.0.0.1:3000"
 ]

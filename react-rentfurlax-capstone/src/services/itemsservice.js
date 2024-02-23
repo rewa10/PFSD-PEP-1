@@ -1,18 +1,18 @@
 export async function getAllItemsByCategory(category)
 {
-    let resp = await fetch(`http://44.203.179.224:8000/furniture/${category}`)
+    let resp = await fetch(`http://3.92.180.84:8000/furniture/${category}`)
      let items = await resp.json();
     return items;
 }
 
 export async function getItemDetailsById(id){
-    let resp = await fetch(`http://44.203.179.224:8000/item/${id}`)
+    let resp = await fetch(`http://3.92.180.84:8000/item/${id}`)
     let item = await resp.json();
     return item;
 }
 export async function createInvoice(invoice){
 
-    let response = await fetch("http://44.203.179.224:8000/invoice/", {
+    let response = await fetch("http://3.92.180.84:8000/invoice/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(invoice),
@@ -23,7 +23,7 @@ export async function createInvoice(invoice){
 }
 
 export async function getAllOrdersPlaceByUser(){
-    let resp = await fetch(`http://44.203.179.224:8000/invoice/${sessionStorage.getItem('user')}`)
+    let resp = await fetch(`http://52.90.6.61:8000/invoice/${sessionStorage.getItem('user')}`)
     let item = await resp.json();
     console.log(item)
     return item;
