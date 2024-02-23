@@ -1,0 +1,56 @@
+version: '3.6'
+# volumes:
+#   init-db:
+#   data-db:
+services:
+  frontend:
+    restart: always
+    command : npm start
+    container_name: front
+    build: ./react-rentfurlax-capstone/
+    image: reactjs-app:1.0 
+    ports:
+      - "3000:3000"
+  mongodb:
+    image: mongo
+    restart: always
+    # volumes:
+    #   - ./init-db:/docker-entrypoint-initdb.d
+    #   - ./data-db:/data/db
+    ports:
+      - 27017:27017
+  backend:
+    build:  ./DjangoRestApiMongoDB/
+    image: python-app:1.0
+    restart: always
+    command: python manage.py runserver 0.0.0.0:8000
+    # volumes:
+    #   - .:/django_mongodb_docker
+    ports:
+      - 8000:8000
+    links:
+      - mongodb
+    depends_on:
+      - migration
+  
+  migration:
+    build: ./DjangoRestApiMongoDB/
+    image: app
+    command: python manage.py migrate
+    volumes:
+      - .:/django_mongodb_docker
+    links:
+      - mongodb
+    depends_on:
+      - make_migrations
+
+  make_migrations:
+    build: ./DjangoRestApiMongoDB/
+    image: app
+    command: python manage.py makemigrations
+    volumes:
+      - .:/django_mongodb_docker
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
