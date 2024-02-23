@@ -48,7 +48,7 @@ export default function Login({status}) {
   };
   return (
     <div className="container">
-      <h2 className="sign">Please Log In</h2>
+      <h2 className="sign">Login Page...</h2>
       <form onSubmit={handleSubmit} className="mb-3">
         
         <span className="error">{errorMsg}</span>
